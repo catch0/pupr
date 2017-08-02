@@ -55,4 +55,6 @@ let UserSchema = new mongoose.Schema({
     }
     
     
-})
+}, {timestamps: true})
+
+mongoose.model("User", UserSchema)
