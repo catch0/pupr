@@ -9,7 +9,7 @@ module.exports = function(app){
 
 
 
-    app.all('*', (req, res, next) => {
+    app.all('*', function (req, res, next){
       res.sendFile(path.resolve('./public/dist/index.html'));
   })
 }

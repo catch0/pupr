@@ -3,18 +3,19 @@ let User = mongoose.model("User");
 
 class UsersController {
     create(req, res){
-      User.findOne({name: req.body.name},(err,user)=>{
-        if(err){return res.json(err)}
-        else if(!user){
-        User.create(req.body, (err, user) => {
-            if(err){ return res.json(err) }
-            return res.json(user);
+        User.findOne({email: req.body.email},(err,user)=>{
+            if(err){return res.json(err)}
+            else if(!user){
+                User.create(req.body,(err,user)=>{
+                    if(err){return res.json(err)}
+                    return res.json(user)
+                })
+            }
+            else{
+                return res.json(user)    
+            }
         })
-    }else{
-      return res.json(user);
     }
-  })
-  }
 
     logout(req, res){
        if(req.session.user_id){

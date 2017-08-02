@@ -42,19 +42,23 @@ let UserSchema = new mongoose.Schema({
     bio: {
         type: String,
         required:[true, "please tell us a bit about yourself"],
-        max: [140, "ooops you've exeeded the limigt"],
+        max: [140, "ooops you've exeeded the limit"],
     },
     email: {
         type: String,
         required:[true, "please enter your email"],
         unique: [true, 'Email is already registered'],
-        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
     },
     admin:{
         type:Boolean,
         required:[false],
-    }
-    
+    },
+    phone: {
+        type: String,
+        match: [/\d{3}-\d{3}-\d{4}/, 'please enter a phone number in the following format "xxx-xxx-xxxx"']
+    },
+    friends:[this],
     
 }, {timestamps: true})
 
