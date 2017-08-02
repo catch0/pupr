@@ -1,8 +1,9 @@
 let mongoose = require('mongoose');
-var validateEmail = function(email) {
-    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return re.test(email)
-};
+
+//var validateEmail = function(email) {
+//    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+//    return re.test(email)
+//};
 
 
 let UserSchema = new mongoose.Schema({
@@ -17,7 +18,7 @@ let UserSchema = new mongoose.Schema({
     alias:{
         type:String,
         required:[true,"please enter an alias"],
-        unique: [true, "looks like that alias is taken lets try another one"]; 
+        unique: [true, "looks like that alias is taken lets try another one"]
     },
     
     address:{
