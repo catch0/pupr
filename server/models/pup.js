@@ -12,7 +12,7 @@ let PupSchema = new mongoose.Schema({
         maxlength:[20, 'name of breed cannot exceed 20 charachters']
     },
     age:{
-        type: Number,
+        type: String,
         required:[true, 'please provide age of pup']
     },
     //still trying to find how to use ratings

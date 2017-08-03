@@ -1,6 +1,6 @@
 let mongoose= require('mongoose');
 let User=mongoose.model('User');
-let Pups= mongoose.model('Pup');
+let Pup= mongoose.model('Pup');
 
 
 
@@ -15,15 +15,7 @@ class PupsController{
 
    Pup.create(req.body, (err, pup)=>{
      if(err){return res.json(err)}
-     User.findByIdAndUpdate(
-       req.body.user,
-       {$push: {pups: pup._id}},
-       {new: true},
-       (err, user)=>{
-         if(err){return res.json(err)}
-         return res.json(pup);
-       })
-   })
+ })
  }
 
  show(req, res){
