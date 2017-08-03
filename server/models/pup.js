@@ -33,7 +33,26 @@ let PupSchema = new mongoose.Schema({
         min: 1,
         max:4
     },
-    agency: [{ name: String, address:String, city:String, state:String, phone:Number}],
+    agencyName: {
+      type:String,
+      required: [true, 'please enter agency Name']
+    },
+    agencyAddress: {
+      type: String,
+      required:[true, 'please enter agency address']
+    },
+    agencyCity: {
+      type:String,
+      reqired:[true, 'please enter agencies city']
+    },
+    agencyState:{
+      type: String,
+      minlength: [2, 'please enter state abbreviation']
+    },
+    agencyPhone:{
+      type: String,
+      match: [/\d{3}-\d{3}-\d{4}/, 'please enter a phone number in the following format "xxx-xxx-xxxx"']
+    }
 }, {timestamps:true})
 
 mongoose.model("Pup", PupSchema)
