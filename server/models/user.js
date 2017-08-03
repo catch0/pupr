@@ -1,15 +1,9 @@
 let mongoose = require('mongoose');
 
-//var validateEmail = function(email) {
-//    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-//    return re.test(email)
-//};
-
-
 let UserSchema = new mongoose.Schema({
     firstName:{
         type:String,
-        required:[true, "please enter your first name"]
+        minlength:[2, "name must be at least 2 charachters"]
     },
     lastName:{
         type:String,
@@ -20,29 +14,28 @@ let UserSchema = new mongoose.Schema({
         required:[true,"please enter an alias"],
         unique: [true, "looks like that alias is taken lets try another one"]
     },
-    
-    address:{
-        type: String,
-        required:[true, "please enter your address"]
-    },
+    address :{
+      type: String,
+      required: [true, "please enter your address"]
+     },
     city:{
         type: String,
-        required:[true,"please enter your city"],
+        required:[true,"please enter your city"]
     },
     state:{
         type:String,
         required:[true, "please enter state"],
-        max: [2, "please enter state abbreviation"]
+        maxlength: [2, "please enter state abbreviation"]
     },
     zip:{
-        type:Number,
+        type:String,
         required:[true, "please enter zip code"],
-        min:[5, "please enter full zip code "], 
+        minlength:[5, "please enter full zip code "]
     },
     bio: {
         type: String,
         required:[true, "please tell us a bit about yourself"],
-        max: [140, "ooops you've exeeded the limit"],
+        maxlength: [140, "please limit your bio to 140 charachters"]
     },
     email: {
         type: String,
@@ -58,8 +51,16 @@ let UserSchema = new mongoose.Schema({
         type: String,
         match: [/\d{3}-\d{3}-\d{4}/, 'please enter a phone number in the following format "xxx-xxx-xxxx"']
     },
+    birthday: {
+      type:Date,
+      required: [true, 'please enter your birthdate']
+    },
+    password:{
+      type:String,
+      required:[true, 'please enter a password']
+    },
     friends:[this],
-    
+
 }, {timestamps: true})
 
 mongoose.model("User", UserSchema)
