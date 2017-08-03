@@ -44,4 +44,4 @@ class PupsController{
   }
 
 }
-module.exports = new PollsController();
+module.exports = new PupsController();
