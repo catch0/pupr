@@ -4,29 +4,36 @@ let PupSchema = new mongoose.Schema({
     name:{
         type:String,
         required:[true, 'please provide the pups name'],
-        max:[30, 'name cannot exceed 30 charachters']
+        maxlength:[30, 'name cannot exceed 30 charachters']
     },
     breed:{
         type:String,
         required:[true, 'please provide pups breed'],
-        max:[20, 'name of breed cannot exceed 20 charachters']
+        maxlength:[20, 'name of breed cannot exceed 20 charachters']
     },
     age:{
-        type: String,
+        type: Number,
         required:[true, 'please provide age of pup']
     },
+    //still trying to find how to use ratings
     goodkids:{
-        type:Boolean,
+        type:number,
+        min: 1,
+        max:4
     },
+      //still trying to find how to use ratings
     gooddogs:{
-        type:Boolean,
+        type:number,
+        min: 1,
+        max:4
     },
+      //still trying to find how to use ratings
     goodcats:{
-        type:Boolean,
+        type: number,
+        min: 1,
+        max:4
     },
-    agency:{
-        type:String,
-    }
+    agency: [{ name: String, address:String, city:String, state:String, phone:Number}],
 }, {timestamps:true})
 
 mongoose.model("Pup", PupSchema)
