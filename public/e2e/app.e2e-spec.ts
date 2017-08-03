@@ -1,10 +1,10 @@
-import { PublicPage } from './app.po';
+import { PuprPage } from './app.po';
 
-describe('public App', () => {
-  let page: PublicPage;
+describe('pupr App', () => {
+  let page: PuprPage;
 
   beforeEach(() => {
-    page = new PublicPage();
+    page = new PuprPage();
   });
 
   it('should display welcome message', () => {
