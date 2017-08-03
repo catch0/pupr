@@ -17,19 +17,19 @@ let PupSchema = new mongoose.Schema({
     },
     //still trying to find how to use ratings
     goodkids:{
-        type:number,
+        type:Number,
         min: 1,
         max:4
     },
       //still trying to find how to use ratings
     gooddogs:{
-        type:number,
+        type:Number,
         min: 1,
         max:4
     },
       //still trying to find how to use ratings
     goodcats:{
-        type: number,
+        type: Number,
         min: 1,
         max:4
     },

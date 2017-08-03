@@ -14,9 +14,10 @@ let UserSchema = new mongoose.Schema({
         required:[true,"please enter an alias"],
         unique: [true, "looks like that alias is taken lets try another one"]
     },
-    address : [
-       { street: String, city: String, state:String, cc: String },
-    ],
+    address :{
+      type: String,
+      required: [true, "please enter your address"]
+     },
     city:{
         type: String,
         required:[true,"please enter your city"]
@@ -27,7 +28,7 @@ let UserSchema = new mongoose.Schema({
         maxlength: [2, "please enter state abbreviation"]
     },
     zip:{
-        type:Number,
+        type:String,
         required:[true, "please enter zip code"],
         minlength:[5, "please enter full zip code "]
     },
@@ -53,7 +54,10 @@ let UserSchema = new mongoose.Schema({
     birthday: {
       type:Date,
       required: [true, 'please enter your birthdate']
-
+    },
+    password:{
+      type:String,
+      required:[true, 'please enter a password']
     },
     friends:[this],
 
